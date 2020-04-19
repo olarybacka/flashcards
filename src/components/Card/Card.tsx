@@ -1,10 +1,7 @@
 import React from 'react'
+import { CardInterface } from './interfaces'
 
-interface CardProps {
-  title: string;
-}
-
-export const Card: React.FC<CardProps> = ({ title }) => (
+export const Card: React.FC<CardInterface> = ({ title }) => (
   <div className="card">
     <div className="title">{title}</div>
   </div>
