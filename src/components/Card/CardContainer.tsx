@@ -1,14 +1,14 @@
 import React from 'react'
-import { Card } from './Card'
-import { CardInterface } from './interfaces'
+import { CardItem } from './CardItem'
+import { Card } from './interfaces'
 
-const cards: [CardInterface] = [{ title: 'test' }]
+const cards: [Card] = [{ title: 'test' }]
 
 export const CardContainer: React.FC = () => (
   <div>
     <div className="title">
       {cards.map((card, i) => (
-        <Card key={i} card={card} />
+        <CardItem key={i} {...{ card }} />
       ))}
     </div>
   </div>

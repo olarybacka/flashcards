@@ -1,8 +1,8 @@
 import React from 'react'
-import { CardInterface } from './interfaces'
+import { Item } from './interfaces'
 import { styles } from './styles'
 
-export const Card: React.FC<CardInterface> = ({ title }) => (
+export const CardItem: React.FC<Item> = ({ card: { title } }) => (
   <div className={styles.card}>
     <div className={styles.title}>{title}</div>
   </div>
