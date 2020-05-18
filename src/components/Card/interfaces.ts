@@ -1,5 +1,7 @@
 export interface Card {
-  title: string
+  sideA: string
+  sideB: string
+  tags?: [string]
 }
 
 export interface Item {
