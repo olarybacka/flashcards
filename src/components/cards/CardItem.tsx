@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card } from './Card'
+import { Card } from '../../types/Card'
 import { CardStyled } from './CardStyles.styled'
 
 export const CardItem: React.FC<{card: Card}> = ({ card: { sideA, sideB } }) => {
