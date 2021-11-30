@@ -18,3 +18,8 @@ export const CardStyled = styled.div`
   border: 1px solid ${colors.border};
   background: ${colors.white};
 `;
+export const Slider = styled.div``;
+export const PrevButton = styled.button`
+  content: '<';
+`;
+export const NextButton = styled.button``;
