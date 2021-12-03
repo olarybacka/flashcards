@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useStore } from '../../store/useStore';
 import { CardData } from '../../types/Card';
 import { useNavigate } from 'react-router-dom';
+import { saveNewCard } from '../../api/cardsQueries';
+
 export const AddCard = () => {
-  const { addCard } = useStore();
   const navigate = useNavigate();
 
   const initialState = {
@@ -12,13 +12,15 @@ export const AddCard = () => {
   };
   const [card, setCard] = useState<CardData>(initialState);
 
+
+
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          addCard(card);
-          navigate("/")
+          saveNewCard(card);
+          navigate('/');
         }}
       >
         <label>
