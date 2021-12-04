@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
-import { Card } from '../../types/Card'
-import { CardStyled } from './CardStyles.styled'
+import React, { useState } from 'react';
+import { Card } from '../../types/Card';
+import { CardContainer, CardFront, CardBack, Inner } from './CardStyles.styled';
 
-export const CardItem: React.FC<{card: Card}> = ({ card: { sideA, sideB } }) => {
-  const [visibleSide, setVisibleSide] = useState(sideA)
+export const CardItem: React.FC<{ card: Card }> = ({
+  card: { sideA, sideB },
+}) => {
+  const [visibleSide, setVisibleSide] = useState('front');
   const switchSide = () => {
-    setVisibleSide(visibleSide === sideA ? sideB : sideA)
-  }
+    setVisibleSide(visibleSide === 'front' ? 'back' : 'front');
+  };
   return (
-    <CardStyled onClick={switchSide}>
-      <h2>{visibleSide}</h2>
-    </CardStyled>
-  )
-}
+    <CardContainer onClick={switchSide} >
+      <Inner visibleSide={visibleSide}>
+        <CardFront>{sideA}</CardFront>
+        <CardBack>{sideB}</CardBack>
+      </Inner>
+    </CardContainer>
+  );
+};

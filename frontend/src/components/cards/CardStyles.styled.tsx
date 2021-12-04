@@ -8,18 +8,46 @@ export const Container = styled.section`
   height: 100%;
 `;
 
-export const CardStyled = styled.div`
+export const CardContainer = styled.article`
   height: 500px;
   width: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid ${colors.border};
   background: ${colors.white};
 `;
-export const Slider = styled.div``;
+
 export const PrevButton = styled.button`
   content: '<';
 `;
+
 export const NextButton = styled.button``;
+
+const Card = styled.div`
+  position: absolute;
+  backface-visibility: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #808080;
+`;
+export const CardFront = styled(Card)`
+  background: #e9e9e9;
+`;
+export const CardBack = styled(Card)`
+  transform: rotateY(180deg);
+  background: #d8d8d8;
+`;
+
+export const Inner = styled.div<{ visibleSide: string }>`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease-out;
+  ${({ visibleSide }) =>
+    visibleSide === 'front' && `transform: rotateY(180deg)`}
+`;

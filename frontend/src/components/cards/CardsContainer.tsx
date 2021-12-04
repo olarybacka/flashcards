@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getCards } from '../../api/cardsQueries';
 import { CardItem } from './CardItem';
-import { Container, Slider, PrevButton, NextButton } from './CardStyles.styled';
+import { Container, PrevButton, NextButton } from './CardStyles.styled';
 
 export const CardsContainer = () => {
   const [index, setIndex] = useState(0);
@@ -18,11 +18,9 @@ export const CardsContainer = () => {
   const card = data?.allCards[index];
   return (
     <Container>
-      <Slider>
-        <PrevButton onClick={showPrevCard}> prev </PrevButton>
-        {card && <CardItem key={card.id} card={card} />}
-        <NextButton onClick={showNextCard}> next </NextButton>
-      </Slider>
+      <PrevButton onClick={showPrevCard}> prev </PrevButton>
+      {card && <CardItem key={card.id} card={card} />}
+      <NextButton onClick={showNextCard}> next </NextButton>
     </Container>
   );
 };
