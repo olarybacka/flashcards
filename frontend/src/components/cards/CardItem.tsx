@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from '../../types/Card';
-import { CardContainer, CardFront, CardBack, Inner } from './CardStyles.styled';
+import { CardContainer, CardFront, CardBack, Inner } from './CardItem.styled';
 
 export const CardItem: React.FC<{ card: Card }> = ({
   card: { sideA, sideB },
@@ -10,7 +10,7 @@ export const CardItem: React.FC<{ card: Card }> = ({
     setVisibleSide(visibleSide === 'front' ? 'back' : 'front');
   };
   return (
-    <CardContainer onClick={switchSide} >
+    <CardContainer onClick={switchSide}>
       <Inner visibleSide={visibleSide}>
         <CardFront>{sideA}</CardFront>
         <CardBack>{sideB}</CardBack>

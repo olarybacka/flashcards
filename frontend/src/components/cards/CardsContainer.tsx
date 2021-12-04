@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getCards } from '../../api/cardsQueries';
 import { CardItem } from './CardItem';
-import { Container, PrevButton, NextButton } from './CardStyles.styled';
+import {
+  PrevButton,
+  NextButton,
+  CardWithButtons,
+} from './CardsContainer.styled';
+import { ProgressBar } from './ProgressBar';
 
 export const CardsContainer = () => {
   const [index, setIndex] = useState(0);
@@ -17,10 +22,14 @@ export const CardsContainer = () => {
 
   const card = data?.allCards[index];
   return (
-    <Container>
-      <PrevButton onClick={showPrevCard}> prev </PrevButton>
-      {card && <CardItem key={card.id} card={card} />}
-      <NextButton onClick={showNextCard}> next </NextButton>
-    </Container>
+    <section>
+      <CardWithButtons>
+        <PrevButton onClick={showPrevCard}> prev </PrevButton>
+        {card && <CardItem key={card.id} card={card} />}
+        <NextButton onClick={showNextCard}> next </NextButton>
+      </CardWithButtons>
+
+      <ProgressBar />
+    </section>
   );
 };

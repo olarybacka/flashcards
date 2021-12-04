@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../assets/theme';
 
-export const Container = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
 export const CardContainer = styled.article`
   height: 500px;
   width: 400px;
@@ -19,12 +12,6 @@ export const CardContainer = styled.article`
   perspective: 3000px;
 `;
 
-export const PrevButton = styled.button`
-  content: '<';
-`;
-
-export const NextButton = styled.button``;
-
 const Card = styled.div`
   position: absolute;
   backface-visibility: hidden;
@@ -35,9 +22,11 @@ const Card = styled.div`
   justify-content: center;
   border: 2px solid #808080;
 `;
+
 export const CardFront = styled(Card)`
   background: #e9e9e9;
 `;
+
 export const CardBack = styled(Card)`
   transform: rotateY(180deg);
   background: #d8d8d8;
