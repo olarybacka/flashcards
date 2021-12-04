@@ -16,6 +16,7 @@ export const CardContainer = styled.article`
   justify-content: center;
   flex-direction: column;
   background: ${colors.white};
+  perspective: 3000px;
 `;
 
 export const PrevButton = styled.button`
