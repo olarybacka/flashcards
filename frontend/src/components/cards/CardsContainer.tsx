@@ -1,28 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 import { getCards } from '../../api/cardsQueries';
-import { useStore } from '../../store/useStore';
 import { CardItem } from './CardItem';
 import { Container, Slider, PrevButton, NextButton } from './CardStyles.styled';
 
 export const CardsContainer = () => {
-  const { cards } = useStore();
   const [index, setIndex] = useState(0);
+  const { data } = useQuery('cards', getCards);
 
-  const getNextCard = () => {
-    setIndex(index === cards.length - 1 ? 0 : index + 1);
-  }
-  const getPrevCard = () => {
-    setIndex(index === 0 ? cards.length - 1 : index - 1);
-  }
-  
-  useEffect(() => getCards(), [])
+  const showNextCard = () => {
+    setIndex(index === data?.allCards.length - 1 ? 0 : index + 1);
+  };
+  const showPrevCard = () => {
+    setIndex(index === 0 ? data?.allCards.length - 1 : index - 1);
+  };
 
+  const card = data?.allCards[index];
   return (
     <Container>
       <Slider>
-        <PrevButton onClick={getPrevCard}> prev </PrevButton>
-        {cards[index] && <CardItem key={cards[index].id} card={cards[index]} />}
-        <NextButton onClick={getNextCard}> next </NextButton>
+        <PrevButton onClick={showPrevCard}> prev </PrevButton>
+        {card && <CardItem key={card.id} card={card} />}
+        <NextButton onClick={showNextCard}> next </NextButton>
       </Slider>
     </Container>
   );

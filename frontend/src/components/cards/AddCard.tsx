@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CardData } from '../../types/Card';
+import { Card } from '../../types/Card';
 import { useNavigate } from 'react-router-dom';
 import { saveNewCard } from '../../api/cardsQueries';
 
@@ -10,9 +10,7 @@ export const AddCard = () => {
     sideA: '',
     sideB: '',
   };
-  const [card, setCard] = useState<CardData>(initialState);
-
-
+  const [card, setCard] = useState<Card>(initialState);
 
   return (
     <div>
@@ -24,14 +22,14 @@ export const AddCard = () => {
         }}
       >
         <label>
-          Side A:{' '}
+          Side A:
           <input
             required
             onChange={(e) => setCard({ ...card, sideA: e.target.value })}
           ></input>
         </label>
         <label>
-          Side B:{' '}
+          Side B:
           <input
             required
             onChange={(e) => setCard({ ...card, sideB: e.target.value })}

@@ -1,7 +1,5 @@
-export type CardData = {
+export type Card = {
   sideA: string;
   sideB: string;
 };
-export type Card = CardData & {
-  id: string;
-};
+
