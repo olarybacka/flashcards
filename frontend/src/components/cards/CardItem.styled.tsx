@@ -10,6 +10,7 @@ export const CardContainer = styled.article`
   flex-direction: column;
   background: ${colors.white};
   perspective: 3000px;
+  background: ${colors.background};
 `;
 
 const Card = styled.div`
@@ -20,16 +21,15 @@ const Card = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #808080;
 `;
 
 export const CardFront = styled(Card)`
-  background: #e9e9e9;
+  background: ${colors.main};
 `;
 
 export const CardBack = styled(Card)`
   transform: rotateY(180deg);
-  background: #d8d8d8;
+  background: ${colors.main2};
 `;
 
 export const Inner = styled.div<{ visibleSide: string }>`

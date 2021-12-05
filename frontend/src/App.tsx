@@ -1,15 +1,15 @@
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { CardsContainer } from './components/cards/CardsContainer';
 import { AddCard } from './components/cards/AddCard';
-import { AppContainer } from './AppContainer/AppContainer';
+import { TopBar } from './TopBar/TopBar';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AddManyCards } from './components/cards/AddManyCards';
+import { AppContainer } from './App.styled';
 
 function App() {
   return (
-    <div className="App">
-      <AppContainer />
+    <AppContainer>
+      <TopBar />
       <QueryClientProvider client={new QueryClient()}>
         <Routes>
           <Route path="/" element={<CardsContainer />} />
@@ -17,7 +17,7 @@ function App() {
           <Route path="/addCards" element={<AddManyCards />} />
         </Routes>
       </QueryClientProvider>
-    </div>
+    </AppContainer>
   );
 }
 

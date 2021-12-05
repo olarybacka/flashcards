@@ -3,8 +3,7 @@ import { useQuery } from 'react-query';
 import { getCards } from '../../api/cardsQueries';
 import { CardItem } from './CardItem';
 import {
-  PrevButton,
-  NextButton,
+  Button,
   CardWithButtons,
 } from './CardsContainer.styled';
 import { ProgressBar } from './ProgressBar';
@@ -24,9 +23,9 @@ export const CardsContainer = () => {
   return (
     <section>
       <CardWithButtons>
-        <PrevButton onClick={showPrevCard}> prev </PrevButton>
+        <Button onClick={showPrevCard}> ❮ </Button>
         {card && <CardItem key={card.id} card={card} />}
-        <NextButton onClick={showNextCard}> next </NextButton>
+        <Button onClick={showNextCard}> ❯ </Button>
       </CardWithButtons>
 
       <ProgressBar current={index} all={data?.allCards.length}/>
