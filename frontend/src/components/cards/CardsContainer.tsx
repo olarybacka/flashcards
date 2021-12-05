@@ -29,7 +29,7 @@ export const CardsContainer = () => {
         <NextButton onClick={showNextCard}> next </NextButton>
       </CardWithButtons>
 
-      <ProgressBar />
+      <ProgressBar current={index} all={data?.allCards.length}/>
     </section>
   );
 };
