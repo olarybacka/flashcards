@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card } from '../../types/Card';
 import { useNavigate } from 'react-router-dom';
 import { saveNewCard } from '../../api/cardsQueries';
+import { ButtonStyled, FormContainer, LabelStyled } from './Forms.styled';
 
 export const AddCard = () => {
   const navigate = useNavigate();
@@ -21,21 +22,23 @@ export const AddCard = () => {
           navigate('/');
         }}
       >
-        <label>
-          Side A:
-          <input
-            required
-            onChange={(e) => setCard({ ...card, sideA: e.target.value })}
-          ></input>
-        </label>
-        <label>
-          Side B:
-          <input
-            required
-            onChange={(e) => setCard({ ...card, sideB: e.target.value })}
-          ></input>
-        </label>
-        <button type="submit">Add</button>
+        <FormContainer>
+          <LabelStyled>
+            Side A:
+            <input
+              required
+              onChange={(e) => setCard({ ...card, sideA: e.target.value })}
+            ></input>
+          </LabelStyled>
+          <LabelStyled>
+            Side B:
+            <input
+              required
+              onChange={(e) => setCard({ ...card, sideB: e.target.value })}
+            ></input>
+          </LabelStyled>
+          <ButtonStyled type="submit">Add</ButtonStyled>
+        </FormContainer>
       </form>
     </div>
   );

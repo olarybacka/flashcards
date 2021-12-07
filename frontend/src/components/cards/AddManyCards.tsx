@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { saveNewCard } from '../../api/cardsQueries';
 import { formatCards } from '../../utils/cardUtils';
+import { ButtonStyled, FormContainer, LabelStyled } from './Forms.styled';
 
 export const AddManyCards = () => {
   const [cards, setCards] = useState<string>('');
@@ -12,21 +13,23 @@ export const AddManyCards = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          formatCards(cards).forEach(card => {
+          formatCards(cards).forEach((card) => {
             saveNewCard(card);
-          })
+          });
           navigate('/');
         }}
       >
-        <label>
-          jk
-          <textarea
-            required
-            onChange={(e) => setCards(e.target.value)}
-          ></textarea>
-        </label>
+        <FormContainer>
+          <LabelStyled>
+            Add list of cards
+            <textarea
+              required
+              onChange={(e) => setCards(e.target.value)}
+            ></textarea>
+          </LabelStyled>
 
-        <button type="submit">Add</button>
+          <ButtonStyled type="submit">Add</ButtonStyled>
+        </FormContainer>
       </form>
     </div>
   );
