@@ -1,5 +1,5 @@
 module.exports = {
   cards: [
-    { id: 1, sideA: 'Lorem', sideB: "Ipsum" },
+    { id: 1, sideA: 'Lorem', sideB: "Ipsum", tags: ['a'] },
   ],
 };

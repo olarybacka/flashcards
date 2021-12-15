@@ -10,6 +10,7 @@ export const AddCard = () => {
   const initialState = {
     sideA: '',
     sideB: '',
+    tags: [],
   };
   const [card, setCard] = useState<Card>(initialState);
 
@@ -35,6 +36,14 @@ export const AddCard = () => {
             <input
               required
               onChange={(e) => setCard({ ...card, sideB: e.target.value })}
+            ></input>
+          </LabelStyled>
+          <LabelStyled>
+            Tags:
+            <input
+              onChange={(e) =>
+                setCard({ ...card, tags: [...card.tags, e.target.value] })
+              }
             ></input>
           </LabelStyled>
           <ButtonStyled type="submit">Add</ButtonStyled>

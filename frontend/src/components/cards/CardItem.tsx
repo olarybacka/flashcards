@@ -3,7 +3,7 @@ import { Card } from '../../types/Card';
 import { CardContainer, CardFront, CardBack, Inner } from './CardItem.styled';
 
 export const CardItem: React.FC<{ card: Card }> = ({
-  card: { sideA, sideB },
+  card: { sideA, sideB, tags },
 }) => {
   const [visibleSide, setVisibleSide] = useState('front');
   const switchSide = () => {
@@ -15,6 +15,7 @@ export const CardItem: React.FC<{ card: Card }> = ({
         <CardFront>{sideA}</CardFront>
         <CardBack>{sideB}</CardBack>
       </Inner>
+      {!!tags.length && <div>tags: {tags} </div>}
     </CardContainer>
   );
 };

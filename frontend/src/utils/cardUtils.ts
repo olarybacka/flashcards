@@ -1,4 +1,6 @@
-export const formatCards = (cards: string) => {
+import { Card } from "../types/Card";
+
+export const formatCards = (cards: string): Card[] => {
   const pairs = cards.split('\n');
   let splitter = '';
   if (pairs.every((e) => e.includes('='))) {
@@ -11,6 +13,6 @@ export const formatCards = (cards: string) => {
 
   return pairs.map((e) => {
     const [sideA, sideB] = e.split(splitter);
-    return { sideA, sideB };
+    return { sideA, sideB, tags: [] };
   });
 };
