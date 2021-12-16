@@ -5,6 +5,9 @@ import { saveNewCard } from '../../api/cardsQueries';
 import { ButtonStyled, FormContainer, LabelStyled } from './Forms.styled';
 import { getTags } from '../../api/cardsQueries';
 import { useQuery } from 'react-query';
+import { Button, Input, Select } from 'antd';
+
+const { Option } = Select;
 
 export const AddCard = () => {
   const navigate = useNavigate();
@@ -15,9 +18,14 @@ export const AddCard = () => {
     tags: [],
   };
   const [card, setCard] = useState<Card>(initialState);
-  const { data: tags } = useQuery('tags', getTags);
+  const { data: tags } = useQuery<string[]>('tags', getTags);
   console.log('tags: ', tags);
 
+  const handleChangeTag = (value: string[]) => {
+    console.log('value: ', value);
+    setCard({ ...card, tags: [...card.tags, ...value] });
+    console.log('card: ', card);
+  };
   return (
     <div>
       <form
@@ -30,27 +38,40 @@ export const AddCard = () => {
         <FormContainer>
           <LabelStyled>
             Side A:
-            <input
+            <Input
+              placeholder="Side A"
               required
               onChange={(e) => setCard({ ...card, sideA: e.target.value })}
-            ></input>
+            />
           </LabelStyled>
           <LabelStyled>
-            Side B:
-            <input
+            Side A:
+            <Input
+              placeholder="Side B"
               required
               onChange={(e) => setCard({ ...card, sideB: e.target.value })}
-            ></input>
+            />
           </LabelStyled>
+
           <LabelStyled>
             Tags:
-            <input
-              onChange={(e) =>
-                setCard({ ...card, tags: [...card.tags, e.target.value] })
-              }
-            ></input>
+            <Select
+              mode="tags"
+              placeholder="Tags"
+              onChange={handleChangeTag}
+            >
+              {tags?.map((tag) => (
+                <Option value={tag} key={tag}>
+                  {tag}
+                </Option>
+              ))}
+            </Select>
           </LabelStyled>
+
           <ButtonStyled type="submit">Add</ButtonStyled>
+
+
+          <Button type="primary">Primary Button</Button>
         </FormContainer>
       </form>
     </div>
