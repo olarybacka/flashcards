@@ -3,6 +3,8 @@ import { Card } from '../../types/Card';
 import { useNavigate } from 'react-router-dom';
 import { saveNewCard } from '../../api/cardsQueries';
 import { ButtonStyled, FormContainer, LabelStyled } from './Forms.styled';
+import { getTags } from '../../api/cardsQueries';
+import { useQuery } from 'react-query';
 
 export const AddCard = () => {
   const navigate = useNavigate();
@@ -13,6 +15,8 @@ export const AddCard = () => {
     tags: [],
   };
   const [card, setCard] = useState<Card>(initialState);
+  const { data: tags } = useQuery('tags', getTags);
+  console.log('tags: ', tags);
 
   return (
     <div>

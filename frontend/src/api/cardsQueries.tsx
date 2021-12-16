@@ -33,3 +33,16 @@ export const getCards = () => {
     .then((response) => response.json())
     .then(({ data }) => data);
 };
+
+export const getTags = () => {
+  return fetch(apiUrl, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ query: '{ allCards { tags} }' }),
+  })
+    .then((response) => response.json())
+    .then(
+      ({ data }) =>
+        new Set(data.allCards.map((el: { tags: string[] }) => el.tags).flat()),
+    );
+};
