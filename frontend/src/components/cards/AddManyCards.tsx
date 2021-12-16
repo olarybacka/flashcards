@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { saveNewCard } from '../../api/cardsQueries';
 import { formatCards } from '../../utils/cardUtils';
-import { ButtonStyled, FormContainer, LabelStyled } from './Forms.styled';
+import { FormContainer, LabelStyled } from './Forms.styled';
+import { Button, Input } from 'antd';
+
+const { TextArea } = Input;
 
 export const AddManyCards = () => {
   const [cards, setCards] = useState<string>('');
@@ -22,13 +25,15 @@ export const AddManyCards = () => {
         <FormContainer>
           <LabelStyled>
             Add list of cards
-            <textarea
+            <TextArea
               required
               onChange={(e) => setCards(e.target.value)}
-            ></textarea>
+            ></TextArea>
           </LabelStyled>
 
-          <ButtonStyled type="submit">Add</ButtonStyled>
+          <Button htmlType="submit" type="primary">
+            Add
+          </Button>
         </FormContainer>
       </form>
     </div>

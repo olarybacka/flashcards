@@ -15,7 +15,7 @@ export const CardItem: React.FC<{ card: Card }> = ({
         <CardFront>{sideA}</CardFront>
         <CardBack>{sideB}</CardBack>
       </Inner>
-      {!!tags.length && <div>tags: {tags} </div>}
+      {!!tags.length && <div>tags: {tags.map(tag => <span>{tag} </span>)}  </div>}
     </CardContainer>
   );
 };

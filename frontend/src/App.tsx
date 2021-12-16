@@ -5,7 +5,7 @@ import { TopBar } from './TopBar/TopBar';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AddManyCards } from './components/cards/AddManyCards';
 import { AppContainer } from './App.styled';
-import "antd/dist/antd.css";
+import "./result.css";
 
 function App() {
   return (

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card } from '../../types/Card';
 import { useNavigate } from 'react-router-dom';
 import { saveNewCard } from '../../api/cardsQueries';
-import { ButtonStyled, FormContainer, LabelStyled } from './Forms.styled';
+import { FormContainer, LabelStyled } from './Forms.styled';
 import { getTags } from '../../api/cardsQueries';
 import { useQuery } from 'react-query';
 import { Button, Input, Select } from 'antd';
@@ -19,12 +19,9 @@ export const AddCard = () => {
   };
   const [card, setCard] = useState<Card>(initialState);
   const { data: tags } = useQuery<string[]>('tags', getTags);
-  console.log('tags: ', tags);
 
   const handleChangeTag = (value: string[]) => {
-    console.log('value: ', value);
-    setCard({ ...card, tags: [...card.tags, ...value] });
-    console.log('card: ', card);
+    setCard({ ...card, tags: [...value] });
   };
   return (
     <div>
@@ -68,10 +65,7 @@ export const AddCard = () => {
             </Select>
           </LabelStyled>
 
-          <ButtonStyled type="submit">Add</ButtonStyled>
-
-
-          <Button type="primary">Primary Button</Button>
+          <Button htmlType="submit" type="primary">Add</Button>
         </FormContainer>
       </form>
     </div>
